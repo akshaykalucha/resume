@@ -21,11 +21,27 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{hyphenat}
 \usepackage{graphicx}
 \usepackage{multicol}     %% Allows to create more than two columns
 \usepackage{array}        %% For adjusting column widths
 \usepackage{fontawesome}
 \input{glyphtounicode}
+
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -56,11 +72,35 @@
 
 %-------------------------
 % Custom commands
+
+
+\newcommand{\externalLink}{%
+  \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+      \begin{scope}[x=1ex, y=1ex]
+          \clip (-0.1,-0.1) 
+              --++ (-0, 1.2) 
+              --++ (0.6, 0) 
+              --++ (0, -0.6) 
+              --++ (0.6, 0) 
+              --++ (0, -1);
+          \path[draw, 
+              line width = 0.5, 
+              rounded corners=0.5] 
+              (0,0) rectangle (1,1);
+      \end{scope}
+      \path[draw, line width = 0.5] (0.5, 0.5) 
+          -- (1, 1);
+      \path[draw, line width = 0.5] (0.6, 1) 
+          -- (1, 1) -- (1, 0.6);
+      }
+  }
+
 \newcommand{\resumeItem}[1]{
   \item\small{
     {#1 \vspace{-2pt}}
   }
 }
+
 
 % command for projects item
 \newcommand{\projectsItem}[2]{
@@ -69,46 +109,57 @@
   }
 }
 
-% Just in case someone needs a heading that does not need to be in a list
-\newcommand{\resumeHeading}[4]{
-    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
-}
-
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
+  \vspace{-2pt}
+  \item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
+      \vspace{-1pt}
+      \textbf{\small#1} & \small#2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
+    \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-5pt}
+    \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small#2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSkillItem}[2]{
+	\item\small{
+		\textbf{#1}{#2 \vspace{-2pt}}
+	}
+}
+
+% \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \newcommand{\resumeProjectSubItem}[2]{\projectsItem{#1}{#2}\vspace{-4pt}}
 
-\renewcommand{\labelitemii}{$\circ$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeSubItem}[2]{\resumeSkillItem{#1}{#2}\vspace{-5pt}}
 
 %-------------------------------------------
-%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{document}
 
-%----------HEADING-----------------
+%----------HEADING----------
 \begin{minipage}[t]{\textwidth}
   {\Huge\textbf{\sc Akshay Kalucha}}
   \hfill
@@ -117,7 +168,7 @@
   
   Software Engineer
   \hfill
-  \href{https://akalucha.me}{https://akalucha.me \faHome}\\
+  \href{https://akcosh.vercel.app}{https://akcosh.me \faHome}\\
   
   Expert in Mobile application development
   \hfill
@@ -130,17 +181,31 @@
   \end{minipage}
 
 
-%-----------EDUCATION-----------------
+%-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
     \resumeSubheading
       {Illinois Institute of Technology}{Chicago, IL}
-      {Master of Science in Information Technology; Software Engineering Concentration}{Anticipated: Nov 2024}
+      {Masters of Science in Information Technology}{Anticipated Graduation: Nov 2024}
+      \resumeItemListStart
+        \resumeItem{\scriptsize{\footnotesize{\textbf{Concentration:}
+        \textit{Software Engineering}
+      }}}
+      \resumeItemListEnd
+      
     \resumeSubheading
-      {University of Delhi}{New Delhi, India}
-      {Bachelor of Science in Computer Science;  {Ist Division}}{Jun. 2018 -- Aug. 2021}
+    {University of Delhi}{New Delhi, India}
+      {Bachelor of Science in Computer Science (Ist Division)}{Jun 2018 -- Aug 2021}
+      \resumeItemListStart
+        \resumeItem{\scriptsize{\footnotesize{\textbf{Concentrations:}
+        \textit{Physical Science, (Mathematics \& Computing)}
+        \vspace{-4pt}
+        \resumeItem{\scriptsize{\footnotesize{\textbf{Courses:}
+        \textit{Calculus and Geometry, Android Programming, Design \& Analysis of Algorithms, Data Structures, Object-Oriented Programming, Computer System Architecture, Probability \& Statistics, Linear Algebra}
+        }}}
+      }}}
+      \resumeItemListEnd
   \resumeSubHeadingListEnd
-
 
 %-----------EXPERIENCE-----------------
 \section{Experience}
@@ -186,7 +251,7 @@
     \resumeProjectSubItem{WireBase}
       {A real-time Node.js editor that generates and displays code in readable form}
     \resumeProjectSubItem{Pictureskew}
-      {Open-source human-computer emotion detection platform for research in the field of smartfying Indian general stores}
+      {Open-source human-computer emotion detection platform for research to smartfy Indian general stores}
     \resumeProjectSubItem{IIT Stream}
       {Multi-client video lecture streaming platform for IIT students}
     \resumeProjectSubItem{PyCalc}
@@ -196,20 +261,23 @@
 %
 %--------PROGRAMMING SKILLS------------
 \section{Skills}
-\textbf{Proficient}: Javascript, Swift, Java, Python \\\vspace{0.3mm}
-% \textbf{Experienced}: C++, Dart\\\vspace{0.3mm}
-\textbf{Mobile}: SwiftUI, UIKit, Kotlin, React-Native, Cocoa Touch, Objective-C\\\vspace{0.3mm}
-\textbf{Web}: React, Express, Node, Nextjs, Redux\\\vspace{0.3mm}
-\textbf{Utilities}: Shell Utilities, Git, PostgreSQL, MongoDB, Firebase, LaTeX
-
+\resumeSubHeadingListStart
+\resumeProjectSubItem{Proficient}
+{Javascript, Swift, Java, Python}
+\resumeProjectSubItem{Mobile}
+{SwiftUI, UIKit, Kotlin, React-Native, Cocoa Touch, Objective-C}
+\resumeProjectSubItem{Web}
+{React, Express, Node, Nextjs}
+\resumeProjectSubItem{Utilities}
+{Shell Utilities, Git, PostgreSQL, MongoDB, Firebase, LaTeX}
+\resumeSubHeadingListEnd
 
 %--------Extracurricular------------
 \section{Extracurricular}
-\textbf{} Expoited and patched the zoobar server as part of Computer Systems Security Course. \\\vspace{0.3mm}
-\textbf{} Developed iOS app in swiftUI which was a Websocket Client for a Websocket Server hosting multiplayer game. \\\vspace{0.3mm}
-\textbf{} Awarded the graduate pathway scholarship by college of computing at Illinois Institute of Technology, 2022. \\\vspace{0.3mm}
-\textbf{} Mentored Code for Safe India hackathon at Indian Institute of Technology, Delhi, 2020. \\\vspace{0.3mm}
-
+\textbf{} \\\hspace{3mm} Expoited and patched the zoobar server as part of Computer Systems Security Course.
+\textbf{} \\\hspace{3mm} Developed iOS app in swiftUI which was a Websocket Client for a Websocket Server hosting multiplayer game.
+\textbf{} \\\hspace{3mm} Awarded the graduate pathway scholarship by college of computing at Illinois Institute of Technology, 2022.
+\textbf{} \\\hspace{3mm} Mentored Code for Safe India hackathon at Indian Institute of Technology, Delhi, 2020.
 
 
 %-------------------------------------------
