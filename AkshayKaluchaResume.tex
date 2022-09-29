@@ -1,0 +1,222 @@
+%-------------------------
+% Resume in Latex
+% Author : Akshay Kalucha
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[document]{ragged2e}
+
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{multicol}     %% Allows to create more than two columns
+\usepackage{array}        %% For adjusting column widths
+\usepackage{fontawesome}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% command for projects item
+\newcommand{\projectsItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\newcommand{\resumeProjectSubItem}[2]{\projectsItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://akalucha.me/}{\Large Akshay Kalucha}} & \href{mailto:akalucha@hawk.iit.edu}{akalucha@hawk.iit.edu}\\
+%   \href{http://akalucha.me/}{http://www.akalucha.me} & +1-312-874-9117 \\
+%   \href{http://github.com/akshaykalucha/}{github://akshaykalucha} &  \href{http://linkedin.com/in/akshaykalucha/}{linkedin://akshaykalucha}\\
+% \end{tabular*}
+
+\begin{minipage}[t]{\textwidth}
+  {\Huge\textbf{\sc Akshay Kalucha}}
+  \hfill
+  akalucha@hawk.iit.edu \faEnvelope
+  
+  
+  Software Engineer
+  \hfill
+  \href{https://akalucha.me}{https://akalucha.me \faHome}\\
+  
+  Expert in Mobile application development
+  \hfill
+  \href{https://github.com/akshaykalucha}{akshay \faGithub} \textbar \
+  \href{https://www.linkedin.com/in/akshaykalucha/}{akshay \faLinkedin} \\
+  
+  Chicago, IL
+  \hfill
+  +13128749117 \faMobile \\
+  \end{minipage}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Illinois Institute of Technology}{Chicago, IL}
+      {Master of Science in Information Technology; Software Engineering Concentration}{Anticipated: Nov 2024}
+    \resumeSubheading
+      {University of Delhi}{New Delhi, India}
+      {Bachelor of Science in Computer Science;  {Ist Division}}{Jun. 2018 -- Aug. 2021}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+    {\href{https://www.hypd.store}{HYPD Store}}{New Delhi}
+      {Software Engineer}{Dec 2021 - Aug 2022}
+      \resumeItemListStart
+        \resumeItem{Used Core Data for persistent storage, reducing redundant network requests.}
+        \resumeItem{Designed p2p data-channel using webRTC for video streaming, scaling it paralley to run encoding, caching and validation.}
+        \resumeItem{Worked with backend engineers to develop server-driven UI in SwiftUI for \href{https://apps.apple.com/in/app/hypd/id1560284106}{hypd store}.}
+        \resumeItem{Overhauled software architecture in MVVM, ustilising async/await and concurrency to reduce memory leaks which significantly improved the on-screen time by 40\%.}
+        \resumeItem{Implemented Push-Notifications, Deep-Linking and in-app notifications.}
+      \resumeItemListEnd
+      
+
+
+\resumeSubheading
+{\href{https://www.du.ac.in}{Dept. of Mathematics, University of Delhi}}{New Delhi}
+  {Research Intern, Guide Prof: Dr. Umesh Kumar}{Nov 2020 - Jan 2021}
+  \resumeItemListStart
+    \resumeItem{Implemented a model that applies multinomial naive bayes classification on a comprehensive labelled dataset of around 240k Twitter users to predict the probability of them not being COVID’19 vaccinated.}
+    \resumeItem{After model training, we identified an optimal classification threshold, based on F1 score on validation set. The model was then evaluated to achieve reasonable scores.}
+  \resumeItemListEnd
+
+    \resumeSubheading
+    {\href{https://www.linkedin.com/company/solveclassesapp/}{Intellify}}{New Delhi}
+      {Software Developer Intern}{fall 2019 and winter 2020}
+      \resumeItemListStart
+        \resumeItem{115 Prs Merged, 550 Contributions.}
+        \resumeItem{Wrote 6000+ lines of code, released 3 major features.}
+        \resumeItem{Designed MVC architecture for the web app and built OTP based login system, JWT Auth, sessions, and Push-Notifications for android app users.}
+        \resumeItem{Fixed lots of bugs, resolved lots of jira tickets and sentry issues.}
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {Georgia Institute of Technology}{Atlanta, GA}
+    %   {Research and Teaching Assistant}{Jan 2012 - Dec 2013}
+    %   \resumeItemListStart
+    %     \resumeItem{Research Assistant - Machine Learning}
+    %       {Research on machine learning for portfolio hedging and replication algorithms. Modeling low-risk \& continuous-return strategies. Developed the python library QSTK.}
+    %     \resumeItem{Teaching Assistant - Computational Investing}
+    %       {The online course on Coursera, had more than 100,000 students enrolled. It was featured on the 11 Alive News and the Atlanta Journal Constitution. Involved in creating assignment, exams and conducting recitation sessions. Also taught the on-campus version of the course.}
+    %   \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectSubItem{WireBase}
+      {A Nodejs realtime editor that compiles and visualise code in human readable format}
+    \resumeProjectSubItem{Pictureskew}
+      {Open-source human-computer emotion detection platform for research in the field of smartfying Indian general stores}
+    \resumeProjectSubItem{IIT Stream}
+      {Multi-client video lecture streaming platform for IIT students}
+    \resumeProjectSubItem{PyCalc}
+      {Neural network package to solve ordinary partial equations}
+  \resumeSubHeadingListEnd
+
+%
+%--------PROGRAMMING SKILLS------------
+\section{Programming Skills}
+\textbf{Proficient}: Javascript, Swift, Java, Python \\\vspace{0.3mm}
+% \textbf{Experienced}: C++, Dart\\\vspace{0.3mm}
+\textbf{Mobile}: SwiftUI, UIKit, Kotlin, React-Native, Cocoa Touch, Objective-C\\\vspace{0.3mm}
+\textbf{Web}: React, Express, Node, Nextjs, Redux\\\vspace{0.3mm}
+\textbf{Utilities}: Shell Utilities, Git, PostgreSQL, MongoDB, Firebase, LaTeX
+
+
+%-------------------------------------------
+\end{document}
